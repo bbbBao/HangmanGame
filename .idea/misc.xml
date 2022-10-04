@@ -15,6 +15,12 @@
         <entry key="..\:/Users/27880/AndroidStudioProjects/HangmanGame/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/27880/AndroidStudioProjects/HangmanGame/app/src/main/res/layout/hangman_game.xml" value="0.75" />
         <entry key="..\:/Users/27880/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout-land/activity_main.xml" value="0.5" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2505" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2505" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_game.xml" value="0.29532012939453123" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/hangman_game.xml" value="0.4244791666666667" />
       </map>
     </option>
   </component>

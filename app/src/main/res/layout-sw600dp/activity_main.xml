@@ -31,7 +31,7 @@
         app:srcCompat="@drawable/hangman6" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnBegin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
