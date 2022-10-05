@@ -1,5 +1,6 @@
 package com.example.hangmangame;
 
+import java.util.Locale;
 import java.util.Random;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,10 +25,13 @@ import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
 
-
+    public String alphabet = "yutdfghbniopjklzxcvasqwerm";
     public WordContent w;
-    int int_random = (new Random()).nextInt(7);
+    int int_random = (new Random()).nextInt(w.words.length);
     String test = w.words[int_random][0];
+    String without_answer = deleteS(test,alphabet);
+    public String answer_record = "";
+
     public int total_len = 0;
     public int turn = 6;
     private TextView wd0;
@@ -130,6 +134,104 @@ public class GameActivity extends AppCompatActivity {
             return list;
         }
 
+        public String deleteS(String x, String original){
+            for (int i = 0; i < x.length() ; i++){
+                original = original.replaceAll(String.valueOf(x.charAt(i)),"");
+
+            }
+            return original;
+        }
+
+        public void hintTwo(View view){
+            turn--;
+            checkTurn(turn);
+            String remain = deleteS(answer_record,without_answer);
+            for (int i = 0; i < remain.length()/2;i++){
+                String x = remain.substring(0,1);
+                remain = remain.substring(1);
+                switch (x){
+                    case "a":
+                        btA.setEnabled(false);
+                        continue;
+                    case "b":
+                        btB.setEnabled(false);
+                        continue;
+                    case "c":
+                        btC.setEnabled(false);
+                        continue;
+                    case "d":
+                        btD.setEnabled(false);
+                        continue;
+                    case "e":
+                        btE.setEnabled(false);
+                        continue;
+                    case "f":
+                        btF.setEnabled(false);
+                        continue;
+                    case "g":
+                        btG.setEnabled(false);
+                        continue;
+                    case "h":
+                        btH.setEnabled(false);
+                        continue;
+                    case "i":
+                        btI.setEnabled(false);
+                        continue;
+                    case "j":
+                        btJ.setEnabled(false);
+                        continue;
+                    case "k":
+                        btK.setEnabled(false);
+                        continue;
+                    case "l":
+                        btL.setEnabled(false);
+                        continue;
+                    case "m":
+                        btM.setEnabled(false);
+                        continue;
+                    case "n":
+                        btN.setEnabled(false);
+                        continue;
+                    case "o":
+                        btO.setEnabled(false);
+                        continue;
+                    case "p":
+                        btP.setEnabled(false);
+                        continue;
+                    case "q":
+                        btQ.setEnabled(false);
+                        continue;
+                    case "r":
+                        btR.setEnabled(false);
+                        continue;
+                    case "s":
+                        btS.setEnabled(false);
+                        continue;
+                    case "t":
+                        btT.setEnabled(false);
+                        continue;
+                    case "u":
+                        btU.setEnabled(false);
+                        continue;
+                    case "v":
+                        btV.setEnabled(false);
+                        continue;
+                    case "w":
+                        btW.setEnabled(false);
+                        continue;
+                    case "x":
+                        btX.setEnabled(false);
+                        continue;
+                    case "y":
+                        btY.setEnabled(false);
+                        continue;
+                    case "z":
+                        btZ.setEnabled(false);
+                        continue;
+                }
+            }
+        }
+
         public void checkTurn(int turn){
 
             switch (turn){
@@ -151,6 +253,10 @@ public class GameActivity extends AppCompatActivity {
                 case 0:
                     img.setImageResource(R.drawable.hangman0);
                     lost.setVisibility(View.VISIBLE);
+                    btA.setEnabled(false);btB.setEnabled(false);btC.setEnabled(false);btD.setEnabled(false);btE.setEnabled(false);btF.setEnabled(false);btG.setEnabled(false);
+                    btH.setEnabled(false);btI.setEnabled(false);btJ.setEnabled(false);btK.setEnabled(false);btL.setEnabled(false);btM.setEnabled(false);btN.setEnabled(false);
+                    btO.setEnabled(false);btP.setEnabled(false);btQ.setEnabled(false);btR.setEnabled(false);btS.setEnabled(false);btT.setEnabled(false);btU.setEnabled(false);
+                    btV.setEnabled(false);btW.setEnabled(false);btX.setEnabled(false);btY.setEnabled(false);btZ.setEnabled(false);
                     break;
             }
         }
@@ -185,6 +291,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         public void setxt(int j, String x){
+            answer_record += (x.toLowerCase());
             switch (j){
                 case 0:
                     wd0.setText(x);
@@ -207,6 +314,13 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
+        public void setBtnFalse(){
+            btA.setEnabled(false);btB.setEnabled(false);btC.setEnabled(false);btD.setEnabled(false);btE.setEnabled(false);btF.setEnabled(false);btG.setEnabled(false);
+            btH.setEnabled(false);btI.setEnabled(false);btJ.setEnabled(false);btK.setEnabled(false);btL.setEnabled(false);btM.setEnabled(false);btN.setEnabled(false);
+            btO.setEnabled(false);btP.setEnabled(false);btQ.setEnabled(false);btR.setEnabled(false);btS.setEnabled(false);btT.setEnabled(false);btU.setEnabled(false);
+            btV.setEnabled(false);btW.setEnabled(false);btX.setEnabled(false);btY.setEnabled(false);btZ.setEnabled(false);
+        }
+
         public void printA(View view){
             ArrayList<Integer> index= getIndex("a",test);
             if (index.size() == 0){
@@ -222,6 +336,8 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+
+                setBtnFalse();
 
             }
 
@@ -242,7 +358,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
-
+                setBtnFalse();
             }
         }
 
@@ -261,7 +377,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
-
+                setBtnFalse();
             }
         }
 
@@ -280,7 +396,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
-
+                setBtnFalse();
             }
         }
 
@@ -299,7 +415,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
-
+                setBtnFalse();
             }
         }
 
@@ -318,7 +434,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
-
+                setBtnFalse();
             }
         }
 
@@ -337,7 +453,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
-
+                setBtnFalse();
             }
         }
 
@@ -375,6 +491,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -413,6 +530,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -451,6 +569,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -489,6 +608,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -527,6 +647,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -565,6 +686,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -603,6 +725,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -641,6 +764,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -679,6 +803,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -717,6 +842,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -755,6 +881,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -793,6 +920,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -831,6 +959,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -869,6 +998,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -907,6 +1037,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -945,6 +1076,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -983,6 +1115,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -1021,6 +1154,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
@@ -1059,6 +1193,7 @@ public class GameActivity extends AppCompatActivity {
             if (total_len == test.length()){
 
                 win.setVisibility(View.VISIBLE);
+                setBtnFalse();
 
             }
         }
