@@ -143,6 +143,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         public void hintTwo(View view){
+        //hinttwo
             turn--;
             checkTurn(turn);
             String remain = deleteS(answer_record,without_answer);
