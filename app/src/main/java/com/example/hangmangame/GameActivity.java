@@ -3,6 +3,7 @@ package com.example.hangmangame;
 import java.util.Random;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import org.w3c.dom.DOMStringList;
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView wd5;
     private TextView lost;
     private TextView win;
+    private TextView hint;
     private ImageView img;
 
     private Button btA;
@@ -63,6 +67,7 @@ public class GameActivity extends AppCompatActivity {
     private Button btX;
     private Button btY;
     private Button btZ;
+    private Button newgame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +85,7 @@ public class GameActivity extends AppCompatActivity {
          img = (ImageView) findViewById(R.id.imageView);
          lost = (TextView) findViewById(R.id.lose);
          win = (TextView) findViewById(R.id.win);
+         hint = (TextView) findViewById(R.id.textHint);
          lost.setVisibility(View.GONE);
          win.setVisibility(View.GONE);
 
@@ -109,6 +115,8 @@ public class GameActivity extends AppCompatActivity {
             btX = (Button) findViewById(R.id.buttonX);
             btY = (Button) findViewById(R.id.buttonY);
             btZ = (Button) findViewById(R.id.buttonZ);
+            newgame = (Button) findViewById(R.id.newGameButton);
+
         }
 
         public ArrayList<Integer> getIndex(String x, String y){
@@ -121,6 +129,7 @@ public class GameActivity extends AppCompatActivity {
 
             return list;
         }
+
         public void checkTurn(int turn){
 
             switch (turn){
@@ -144,6 +153,35 @@ public class GameActivity extends AppCompatActivity {
                     lost.setVisibility(View.VISIBLE);
                     break;
             }
+        }
+
+        public void HintShown(View view){
+            hint.setText(w.words[int_random][1]);
+        }
+
+        public void startNewGame(View view){
+//            hint.setText("");
+//            lost.setVisibility(View.GONE);
+//            win.setVisibility(View.GONE);
+//            int int_random = (new Random()).nextInt(7);
+//            String test = w.words[int_random][0];
+//            int total_len = 0;
+//            int turn = 6;
+//            wd0.setText("   ");
+//            wd1.setText("   ");
+//            wd2.setText("   ");
+//            wd3.setText("   ");
+//            wd4.setText("   ");
+//            wd5.setText("   ");
+//
+//            img.setImageResource(R.drawable.hangman6);
+//            btA.setEnabled(true);btB.setEnabled(true);btC.setEnabled(true);btD.setEnabled(true);btE.setEnabled(true);btF.setEnabled(true);btG.setEnabled(true);
+//            btH.setEnabled(true);btI.setEnabled(true);btJ.setEnabled(true);btK.setEnabled(true);btL.setEnabled(true);btM.setEnabled(true);btN.setEnabled(true);
+//            btO.setEnabled(true);btP.setEnabled(true);btQ.setEnabled(true);btR.setEnabled(true);btS.setEnabled(true);btT.setEnabled(true);btU.setEnabled(true);
+//            btV.setEnabled(true);btW.setEnabled(true);btX.setEnabled(true);btY.setEnabled(true);btZ.setEnabled(true);
+            Intent i = new Intent(this, GameActivity.class);
+            startActivity(i);
+            finish();
         }
 
         public void setxt(int j, String x){
