@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
@@ -143,14 +145,17 @@ public class GameActivity extends AppCompatActivity {
         }
 
         public void hintTwo(View view){
+            if (turn == 1){
+                Toast.makeText(this, "Hint not available", Toast.LENGTH_SHORT).show();
+            }else{
         //hinttwo
             turn--;
             checkTurn(turn);
             String remain = deleteS(answer_record,without_answer);
-            for (int i = 0; i < remain.length()/2;i++){
-                String x = remain.substring(0,1);
+            for (int i = 0; i < remain.length()/2 + 1;i++) {
+                String x = remain.substring(0, 1);
                 remain = remain.substring(1);
-                switch (x){
+                switch (x) {
                     case "a":
                         btA.setEnabled(false);
                         continue;
@@ -230,6 +235,7 @@ public class GameActivity extends AppCompatActivity {
                         btZ.setEnabled(false);
                         continue;
                 }
+            }
             }
         }
 
