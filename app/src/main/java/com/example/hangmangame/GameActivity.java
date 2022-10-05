@@ -1,5 +1,6 @@
 package com.example.hangmangame;
 
+import java.util.Random;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,20 +13,29 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-
+import org.w3c.dom.DOMStringList;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class GameActivity extends AppCompatActivity {
 
-    public String test = "abcefg";
+
+    public WordContent w;
+    int int_random = (new Random()).nextInt(7);
+    String test = w.words[int_random][0];
+    public int total_len = 0;
+    public int turn = 6;
     private TextView wd0;
     private TextView wd1;
     private TextView wd2 ;
     private TextView wd3;
     private TextView wd4;
     private TextView wd5;
+    private TextView lost;
+    private TextView win;
+    private ImageView img;
 
     private Button btA;
     private Button btB;
@@ -67,8 +77,11 @@ public class GameActivity extends AppCompatActivity {
          wd3 = (TextView) findViewById(R.id.word3);
          wd4 = (TextView) findViewById(R.id.word4);
          wd5 = (TextView) findViewById(R.id.word5);
-
-
+         img = (ImageView) findViewById(R.id.imageView);
+         lost = (TextView) findViewById(R.id.lose);
+         win = (TextView) findViewById(R.id.win);
+         lost.setVisibility(View.GONE);
+         win.setVisibility(View.GONE);
 
             btA = (Button) findViewById(R.id.buttonA);
             btB = (Button) findViewById(R.id.buttonB);
@@ -108,204 +121,194 @@ public class GameActivity extends AppCompatActivity {
 
             return list;
         }
+        public void checkTurn(int turn){
+
+            switch (turn){
+                case 5:
+                    img.setImageResource(R.drawable.hangman5);
+                    break;
+                case 4:
+                    img.setImageResource(R.drawable.hangman4);
+                    break;
+                case 3:
+                    img.setImageResource(R.drawable.hangman3);
+                    break;
+                case 2:
+                    img.setImageResource(R.drawable.hangman2);
+                    break;
+                case 1:
+                    img.setImageResource(R.drawable.hangman1);
+                    break;
+                case 0:
+                    img.setImageResource(R.drawable.hangman0);
+                    lost.setVisibility(View.VISIBLE);
+                    break;
+            }
+        }
+
+        public void setxt(int j, String x){
+            switch (j){
+                case 0:
+                    wd0.setText(x);
+                    break;
+                case 1:
+                    wd1.setText(x);
+                    break;
+                case 2:
+                    wd2.setText(x);
+                    break;
+                case 3:
+                    wd3.setText(x);
+                    break;
+                case 4:
+                    wd4.setText(x);
+                    break;
+                case 5:
+                    wd5.setText(x);
+                    break;
+            }
+        }
+
         public void printA(View view){
             ArrayList<Integer> index= getIndex("a",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
-                switch (j){
-                    case 0:
-                        wd0.setText("A");
-                        break;
-                    case 1:
-                        wd1.setText("A");
-                        break;
-                    case 2:
-                        wd2.setText("A");
-                        break;
-                    case 3:
-                        wd3.setText("A");
-                        break;
-                    case 4:
-                        wd4.setText("A");
-                        break;
-                    case 5:
-                        wd5.setText("A");
-                        break;
-                }
+                setxt(j,"A");
             }
             btA.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
+
         }
 
         public void printB(View view){
             ArrayList<Integer> index= getIndex("b",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
-                switch (j){
-                    case 0:
-                        wd0.setText("B");
-                        break;
-                    case 1:
-                        wd1.setText("B");
-                        break;
-                    case 2:
-                        wd2.setText("B");
-                        break;
-                    case 3:
-                        wd3.setText("B");
-                        break;
-                    case 4:
-                        wd4.setText("B");
-                        break;
-                    case 5:
-                        wd5.setText("B");
-                        break;
-                }
+                setxt(j,"B");
             }
             btB.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printC(View view){
             ArrayList<Integer> index= getIndex("c",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
-                switch (j){
-                    case 0:
-                        wd0.setText("C");
-                        break;
-                    case 1:
-                        wd1.setText("C");
-                        break;
-                    case 2:
-                        wd2.setText("C");
-                        break;
-                    case 3:
-                        wd3.setText("C");
-                        break;
-                    case 4:
-                        wd4.setText("C");
-                        break;
-                    case 5:
-                        wd5.setText("C");
-                        break;
-                }
+                setxt(j,"C");
             }
             btC.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printD(View view){
             ArrayList<Integer> index= getIndex("d",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
-                switch (j){
-                    case 0:
-                        wd0.setText("D");
-                        break;
-                    case 1:
-                        wd1.setText("D");
-                        break;
-                    case 2:
-                        wd2.setText("D");
-                        break;
-                    case 3:
-                        wd3.setText("D");
-                        break;
-                    case 4:
-                        wd4.setText("D");
-                        break;
-                    case 5:
-                        wd5.setText("D");
-                        break;
-                }
+                setxt(j,"D");
             }
             btD.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printE(View view){
             ArrayList<Integer> index= getIndex("e",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
-                switch (j){
-                    case 0:
-                        wd0.setText("E");
-                        break;
-                    case 1:
-                        wd1.setText("E");
-                        break;
-                    case 2:
-                        wd2.setText("E");
-                        break;
-                    case 3:
-                        wd3.setText("E");
-                        break;
-                    case 4:
-                        wd4.setText("E");
-                        break;
-                    case 5:
-                        wd5.setText("E");
-                        break;
-                }
+                setxt(j,"E");
             }
             btE.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printF(View view){
             ArrayList<Integer> index= getIndex("f",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
-                switch (j){
-                    case 0:
-                        wd0.setText("F");
-                        break;
-                    case 1:
-                        wd1.setText("F");
-                        break;
-                    case 2:
-                        wd2.setText("F");
-                        break;
-                    case 3:
-                        wd3.setText("F");
-                        break;
-                    case 4:
-                        wd4.setText("F");
-                        break;
-                    case 5:
-                        wd5.setText("F");
-                        break;
-                }
+                setxt(j,"F");
             }
             btF.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printG(View view){
             ArrayList<Integer> index= getIndex("g",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
-                switch (j){
-                    case 0:
-                        wd0.setText("G");
-                        break;
-                    case 1:
-                        wd1.setText("G");
-                        break;
-                    case 2:
-                        wd2.setText("G");
-                        break;
-                    case 3:
-                        wd3.setText("G");
-                        break;
-                    case 4:
-                        wd4.setText("G");
-                        break;
-                    case 5:
-                        wd5.setText("G");
-                        break;
-                }
+                setxt(j,"G");
             }
             btG.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printH(View view){
             ArrayList<Integer> index= getIndex("h",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -330,10 +333,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btH.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printI(View view){
             ArrayList<Integer> index= getIndex("i",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -358,10 +371,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btI.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printJ(View view){
             ArrayList<Integer> index= getIndex("j",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -386,10 +409,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btJ.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printK(View view){
             ArrayList<Integer> index= getIndex("k",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -414,10 +447,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btK.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printL(View view){
             ArrayList<Integer> index= getIndex("l",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -442,10 +485,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btL.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printM(View view){
             ArrayList<Integer> index= getIndex("m",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -470,10 +523,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btM.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printN(View view){
             ArrayList<Integer> index= getIndex("n",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -498,10 +561,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btN.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printO(View view){
             ArrayList<Integer> index= getIndex("o",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -526,10 +599,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btO.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printP(View view){
             ArrayList<Integer> index= getIndex("p",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -554,10 +637,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btP.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printQ(View view){
             ArrayList<Integer> index= getIndex("q",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -582,10 +675,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btQ.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printR(View view){
             ArrayList<Integer> index= getIndex("r",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -610,10 +713,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btR.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printS(View view){
             ArrayList<Integer> index= getIndex("s",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -638,10 +751,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btS.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printT(View view){
             ArrayList<Integer> index= getIndex("t",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -666,10 +789,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btT.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printU(View view){
             ArrayList<Integer> index= getIndex("u",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -694,10 +827,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btU.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printV(View view){
             ArrayList<Integer> index= getIndex("v",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -722,10 +865,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btV.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printW(View view){
             ArrayList<Integer> index= getIndex("w",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -750,10 +903,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btW.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printX(View view){
             ArrayList<Integer> index= getIndex("x",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -778,10 +941,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btX.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printY(View view){
             ArrayList<Integer> index= getIndex("y",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -806,10 +979,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btY.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
         public void printZ(View view){
             ArrayList<Integer> index= getIndex("z",test);
+            if (index.size() == 0){
+                turn --;
+                checkTurn(turn);
+            }
             for (int i =0; i < index.size();i++){
                 int j = index.get(i);
                 switch (j){
@@ -834,6 +1017,12 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             btZ.setEnabled(false);
+            total_len += index.size();
+            if (total_len == test.length()){
+
+                win.setVisibility(View.VISIBLE);
+
+            }
         }
 
     }
