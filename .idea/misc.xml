@@ -19,7 +19,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2505" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout-sw600dp/activity_main.xml" value="0.318359375" />
-        <entry key="app/src/main/res/layout/activity_game.xml" value="0.29532012939453123" />
+        <entry key="app/src/main/res/layout/activity_game.xml" value="0.42704620361328127" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/hangman_game.xml" value="0.4244791666666667" />
       </map>

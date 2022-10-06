@@ -200,7 +200,8 @@
                     android:onClick="printA"
                     android:text="a"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp" />
 
                 <Button
                     android:id="@+id/buttonB"
@@ -211,7 +212,8 @@
                     android:onClick="printB"
                     android:text="b"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonC"
@@ -222,7 +224,8 @@
                     android:onClick="printC"
                     android:text="c"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonD"
@@ -233,7 +236,8 @@
                     android:onClick="printD"
                     android:text="d"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonE"
@@ -244,7 +248,8 @@
                     android:onClick="printE"
                     android:text="e"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonF"
@@ -255,7 +260,8 @@
                     android:onClick="printF"
                     android:text="f"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonG"
@@ -266,7 +272,8 @@
                     android:onClick="printG"
                     android:text="g"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonH"
@@ -277,7 +284,8 @@
                     android:onClick="printH"
                     android:text="h"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
             </TableRow>
 
@@ -293,7 +301,8 @@
                     android:onClick="printI"
                     android:text="i"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonJ"
@@ -304,7 +313,8 @@
                     android:onClick="printJ"
                     android:text="j"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonK"
@@ -315,7 +325,8 @@
                     android:onClick="printK"
                     android:text="k"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonL"
@@ -326,7 +337,8 @@
                     android:onClick="printL"
                     android:text="l"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonM"
@@ -337,7 +349,8 @@
                     android:onClick="printM"
                     android:text="m"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonN"
@@ -348,7 +361,8 @@
                     android:onClick="printN"
                     android:text="n"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonO"
@@ -359,7 +373,8 @@
                     android:onClick="printO"
                     android:text="o"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonP"
@@ -370,7 +385,8 @@
                     android:onClick="printP"
                     android:text="p"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
             </TableRow>
 
@@ -387,7 +403,8 @@
                     android:onClick="printQ"
                     android:text="q"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonR"
@@ -399,7 +416,8 @@
                     android:onClick="printR"
                     android:text="r"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonS"
@@ -410,7 +428,8 @@
                     android:onClick="printS"
                     android:text="s"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonT"
@@ -421,7 +440,8 @@
                     android:onClick="printT"
                     android:text="t"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonU"
@@ -432,7 +452,8 @@
                     android:onClick="printU"
                     android:text="u"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonV"
@@ -443,7 +464,8 @@
                     android:onClick="printV"
                     android:text="v"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonW"
@@ -454,7 +476,8 @@
                     android:onClick="printW"
                     android:text="w"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonX"
@@ -465,7 +488,8 @@
                     android:onClick="printX"
                     android:text="x"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
             </TableRow>
 
@@ -482,7 +506,8 @@
 
                     android:text="y"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
 
                 <Button
                     android:id="@+id/buttonZ"
@@ -493,7 +518,8 @@
 
                     android:text="z"
                     android:textAlignment="viewStart"
-                    android:textSize="8sp" />
+                    android:textStyle="bold"
+                    android:textSize="10dp"  />
             </TableRow>
         </TableLayout>
 
