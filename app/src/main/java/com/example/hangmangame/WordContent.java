@@ -1,7 +1,5 @@
 package com.example.hangmangame;
 
-import java.util.ArrayList;
-
 public class WordContent {
 
     public static String[][] words = {{"banana","Fruit"},{"apple","Fruit"},
