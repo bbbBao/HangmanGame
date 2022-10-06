@@ -1,28 +1,16 @@
 package com.example.hangmangame;
 
-import java.util.Locale;
+
 import java.util.Random;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import org.w3c.dom.DOMStringList;
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -36,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
 
     public int total_len = 0;
     public int turn = 6;
+    public int hint_count = 3;
     private TextView wd0;
     private TextView wd1;
     private TextView wd2 ;
@@ -74,13 +63,12 @@ public class GameActivity extends AppCompatActivity {
     private Button btY;
     private Button btZ;
     private Button newgame;
+    private Button hintBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
-
 
          wd0 = (TextView) findViewById(R.id.word0);
          wd1 = (TextView) findViewById(R.id.word1);
@@ -92,6 +80,7 @@ public class GameActivity extends AppCompatActivity {
          lost = (TextView) findViewById(R.id.lose);
          win = (TextView) findViewById(R.id.win);
          hint = (TextView) findViewById(R.id.textHint);
+         hintBtn = (Button) findViewById(R.id.button63);
          lost.setVisibility(View.GONE);
          win.setVisibility(View.GONE);
 
@@ -144,8 +133,9 @@ public class GameActivity extends AppCompatActivity {
             return original;
         }
 
-        public void hintTwo(View view){
+        public void hintTwo(){
             if (turn == 1){
+                hintBtn.setEnabled(false);
                 Toast.makeText(this, "Hint not available", Toast.LENGTH_SHORT).show();
             }else{
         //hinttwo
@@ -239,6 +229,71 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
+        public void hintThree(){
+            String[] vowels = {"a", "e", "i", "o", "u"};
+            if (turn == 1){
+                Toast.makeText(this, "Hint not available", Toast.LENGTH_SHORT).show();
+                hintBtn.setEnabled(false);
+            }else{
+                //hintThree
+                turn--;
+                checkTurn(turn);
+                for (String vowel: vowels){
+                    if (!answer_record.contains(vowel)){
+                        ArrayList<Integer> index= getIndex(vowel,test);
+                        switch (vowel){
+                            case "a":
+                                for (int i =0; i < index.size();i++){
+                                    int j = index.get(i);
+                                    setxt(j,"A");
+                                }
+                                btA.setEnabled(false);
+                                total_len += index.size();
+                                continue;
+                            case "e":
+                                for (int i =0; i < index.size();i++){
+                                    int j = index.get(i);
+                                    setxt(j,"E");
+                                }
+                                btE.setEnabled(false);
+                                total_len += index.size();
+                                continue;
+                            case "i":
+                                for (int i =0; i < index.size();i++){
+                                    int j = index.get(i);
+                                    setxt(j,"I");
+                                }
+                                btI.setEnabled(false);
+                                total_len += index.size();
+                                continue;
+                            case "o":
+                                for (int i =0; i < index.size();i++){
+                                    int j = index.get(i);
+                                    setxt(j,"O");
+                                }
+                                btO.setEnabled(false);
+                                total_len += index.size();
+                                continue;
+                            case "u":
+                                for (int i =0; i < index.size();i++){
+                                    int j = index.get(i);
+                                    setxt(j,"U");
+                                }
+                                btU.setEnabled(false);
+                                total_len += index.size();
+                        }
+                        if (total_len == test.length()){
+
+                            win.setVisibility(View.VISIBLE);
+
+                            setBtnFalse();
+
+                        }
+                    }
+                }
+            }
+        }
+
         public void checkTurn(int turn){
 
             switch (turn){
@@ -270,7 +325,19 @@ public class GameActivity extends AppCompatActivity {
         }
 
         public void HintShown(View view){
-            hint.setText(w.words[int_random][1]);
+            if (hint_count == 3) {
+                hint_count --;
+                hint.setText(w.words[int_random][1]);
+            } else if (hint_count == 2){
+                hint_count --;
+                hintTwo();
+            } else if (hint_count == 1){
+                hint_count --;
+                hintThree();
+                hintBtn.setEnabled(false);
+                Toast.makeText(this, "You have used up all your hints!", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
         public void startNewGame(View view){
