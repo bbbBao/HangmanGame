@@ -315,6 +315,8 @@ public class GameActivity extends AppCompatActivity {
                 case 0:
                     img.setImageResource(R.drawable.hangman0);
                     lost.setVisibility(View.VISIBLE);
+                    Toast.makeText(this, "The answer is " + test, Toast.LENGTH_SHORT).show();
+                    hintBtn.setEnabled(false);
                     btA.setEnabled(false);btB.setEnabled(false);btC.setEnabled(false);btD.setEnabled(false);btE.setEnabled(false);btF.setEnabled(false);btG.setEnabled(false);
                     btH.setEnabled(false);btI.setEnabled(false);btJ.setEnabled(false);btK.setEnabled(false);btL.setEnabled(false);btM.setEnabled(false);btN.setEnabled(false);
                     btO.setEnabled(false);btP.setEnabled(false);btQ.setEnabled(false);btR.setEnabled(false);btS.setEnabled(false);btT.setEnabled(false);btU.setEnabled(false);
@@ -389,6 +391,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         public void setBtnFalse(){
+            hintBtn.setEnabled(false);
             btA.setEnabled(false);btB.setEnabled(false);btC.setEnabled(false);btD.setEnabled(false);btE.setEnabled(false);btF.setEnabled(false);btG.setEnabled(false);
             btH.setEnabled(false);btI.setEnabled(false);btJ.setEnabled(false);btK.setEnabled(false);btL.setEnabled(false);btM.setEnabled(false);btN.setEnabled(false);
             btO.setEnabled(false);btP.setEnabled(false);btQ.setEnabled(false);btR.setEnabled(false);btS.setEnabled(false);btT.setEnabled(false);btU.setEnabled(false);
